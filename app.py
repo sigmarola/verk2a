@@ -1,13 +1,10 @@
-from bottle import route, run, error, template, redirect, abort
+from bottle import route, run, error, template, redirect, abort, get, response
 from sys import argv
-main = Bottle()
-#@error(404)
-#def error404(error):
-#   return '<h1>villa</h1>'
-@route('/')
+
+@get('/')
 def redir():
     redirect('/home')
-@route('/<name>')
+@get('/<name>')
 def index(name):
     if name == 'home':
         return '<h1>Home</h1>' \
@@ -20,9 +17,6 @@ def index(name):
                '<a href="/home">Home</a><br><a href="/about">About</a><br><a href="/contact">Contact</a>'
     else:
         abort(404)
-@Bottle.error(main, 404)
+@error(404)
 def error404(error):
-    return '<h1>villa</h1>'
-
-#run(host='localhost', port=5000, debug=True)
 bottle.run(host='0.0.0.0', port=argv[1])
