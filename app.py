@@ -1,4 +1,13 @@
+# -*- coding: utf-8 -*-
+
+import os
+from os import environ as env
+import bottle
+application = bottle.default_app()
+from sys import argv
 from bottle import route, run, error, template, redirect, abort, get, response
+bottle.debug(True)
+
 from sys import argv
 
 @get('/')
